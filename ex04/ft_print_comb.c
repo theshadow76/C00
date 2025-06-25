@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_print_comb.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vwalker <vwalker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/25 12:53:30 by vwalker           #+#    #+#             */
-/*   Updated: 2025/06/25 14:36:42 by vwalker          ###   ########.fr       */
+/*   Created: 2025/06/25 14:43:52 by vwalker           #+#    #+#             */
+/*   Updated: 2025/06/25 14:55:57 by vwalker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <stdlib.h>
-#include <fcntl.h>
-#include <string.h>
 
-void ft_putchar(char c) {
-	write(1, &c, 1);
+#include <stdio.h>
+
+
+void ft_print_comb(void) {
+    char h = '0', t = '1', u = '2';
+
+    while ((h <= '7') || (t <= '8') || (u <= '9')) {
+        printf ("%c%c%c, ", h, t, u);
+        u != '9' ? ++u : (t != '8' ? (++t, u = t + 1) : (++h, t = h + 1, u = t + 1));
+    }
 }
 
+
 int main() {
-	char txt;
-
-	txt = 't';
-	ft_putchar(txt);
-
-	return 0;
+    ft_print_comb();
+    
+    return 0;
 }

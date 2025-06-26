@@ -6,7 +6,7 @@
 /*   By: vwalker <vwalker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 15:36:12 by vwalker           #+#    #+#             */
-/*   Updated: 2025/06/25 16:36:42 by vwalker          ###   ########.fr       */
+/*   Updated: 2025/06/26 09:43:05 by vwalker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,54 +64,10 @@
 
 void write_char(char c)
  {
-    putchar(&c);
+    putchar(c);
  }
-void print_combination_helper(int combination_array[], int n) {
-    for (int i = 0; i <= n-1; i++) {
-        char digit_char = '0' + combination_array[i];
-        write_char(digit_char);
-    }
-}
 
 void ft_print_combn(int n) {
-    if (n <= 0 || n >= 10) {
-        return 0;
-    }
-
-    int combination_array[10];
-    
-    for (int i = 0; i <= n-1; i++) {
-        combination_array[i] = i;
-    }
-    
-    while (true)
-    {
-        print_combination_helper(combination_array, n);
-        bool is_last = true;
-        for (int k = 0; k <= n-1; k++) {
-            if (combination_array[k] != (10 - n + k)) {
-                is_last = false;
-            }
-        }
-        
-        write_char(',');
-        write_char(' ');
-
-        int i = n - 1;
-
-        while (i >= 0) {
-            int max_value_for_current_digit = 9 - (n - 1 - i);
-            if (combination_array[i] < max_value_for_current_digit) {
-                break;
-            }
-        }
-        combination_array[i] = combination_array[i] + i;
-
-        for (int j = i + 1; i <= n-1; j++) {
-            combination_array[j] = combination_array[j-1] + 1;
-        }
-        
-    }
     
 }
 

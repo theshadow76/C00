@@ -6,20 +6,52 @@
 /*   By: vwalker <vwalker@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/25 14:43:52 by vwalker           #+#    #+#             */
-/*   Updated: 2025/06/25 14:55:57 by vwalker          ###   ########.fr       */
+/*   Updated: 2025/06/26 10:09:44 by vwalker          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include <stdio.h>
+#include <unistd.h>
+
+void print_char(char n) {
+    write(1, &n, 1);
+}
 
 
 void ft_print_comb(void) {
-    char h = '0', t = '1', u = '2';
+    char h;
+    char t;
+    char u;
+    h = '0';
+    t = '1';
+    u = '2';
 
     while ((h <= '7') || (t <= '8') || (u <= '9')) {
-        printf ("%c%c%c, ", h, t, u);
-        u != '9' ? ++u : (t != '8' ? (++t, u = t + 1) : (++h, t = h + 1, u = t + 1));
+        print_char(h);
+        print_char(t);
+        print_char(u);
+        if (h == '7' && t == '8' && u == '9') {
+            break;
+        }
+        print_char(',');
+        print_char(' ');
+        
+        if (u != '9') {
+            ++u;
+        }
+        else {
+            if (t != '8') {
+                ++t;
+                u = t + 1;
+            }
+            else {
+                ++h;
+                t = h + 1;
+                u = t + 1;
+            }
+            //break;
+        }
     }
 }
 
